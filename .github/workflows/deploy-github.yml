@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main
+      - offline
   pull_request:
 
 jobs:
@@ -33,9 +33,7 @@ jobs:
 
       - name: Configure .env
         shell: bash
-        env:
-          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
-        run: echo -e "NAVIGATOR_URL=https://mitre-atlas.github.io/atlas-navigator\nANALYTICS_ID=$GOOGLE_ANALYTICS_ID" > .env
+        run: echo -e "NAVIGATOR_URL=https://mitre-atlas.github.io/atlas-navigator\nROUTER_BASE=/atlas-website/" > .env
 
       - name: Install dependencies
         run: npm install
